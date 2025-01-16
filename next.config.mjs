@@ -1,14 +1,13 @@
-/** @type {import('next').NextConfig} */
-import path from "path";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const nextConfig = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Use __dirname as needed
+export default {
   webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "@": path.resolve(__dirname),
-    };
+    config.resolve.alias['@components'] = path.resolve(__dirname, 'components');
     return config;
   },
 };
-
-export default nextConfig;
